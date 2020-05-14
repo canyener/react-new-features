@@ -1,4 +1,4 @@
-![Build](https://github.com/canyener/react-new-features/workflows/Build/badge.svg)
+![CI](https://github.com/canyener/react-new-features/workflows/CI/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=canyener_react-new-features&metric=alert_status)](https://sonarcloud.io/dashboard?id=canyener_react-new-features)
 
 # react-new-features
