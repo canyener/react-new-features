@@ -1,5 +1,7 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=canyener_react-new-features&metric=alert_status)](https://sonarcloud.io/dashboard?id=canyener_react-new-features)
+
 # react-new-features
-A simple project to explore both create-react-app and latest React features like Hooks, Fragments, Context API
+A simple project to explore both create-react-app and latest React features like Hooks, Fragments and Context API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
