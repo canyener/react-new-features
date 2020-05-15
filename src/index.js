@@ -19,8 +19,8 @@ const NoteApp = () => {
     setBody('')
   }
 
-  const removeNote = (title) => {
-    setNotes(notes.filter(note => note.title !== title))
+  const removeNote = (titleToRemove) => {
+    setNotes(notes.filter(note => note.title !== titleToRemove))
   }
 
   return (
