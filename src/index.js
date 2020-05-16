@@ -2,72 +2,80 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
 
-// const NoteApp = () => {
-//   const [notes, setNotes] = useState([])
-//   const [title, setTitle] = useState('')
-//   const [body, setBody] = useState('')
+const NoteApp = () => {
+
+  const notesData = JSON.parse(localStorage.getItem('notes'))
+
+  const [notes, setNotes] = useState(notesData || [])
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
   
-//   const addNote = (e) => {
-//     e.preventDefault()
-//     setNotes([
-//       ...notes,
-//       { title, body }
-//     ])
+  
+  const addNote = (e) => {
+    e.preventDefault()
+    setNotes([
+      ...notes,
+      { title, body }
+    ])
 
-//     setTitle('')
-//     setBody('')
-//   }
+    setTitle('')
+    setBody('')
+  }
 
-//   const removeNote = (titleToRemove) => {
-//     setNotes(notes.filter(note => note.title !== titleToRemove))
-//   }
+  const removeNote = (titleToRemove) => {
+    setNotes(notes.filter(note => note.title !== titleToRemove))
+  }
 
-//   return (
-//     <div>
-//       <h1>Notes</h1>
-//       {
-//         notes.map(note => (
-//           <div key={note.title}>
-//             <h3>{note.title}</h3>
-//             <p>{note.body}</p>
-//             <button onClick={() => removeNote(note.title)}>x</button>
-//           </div>
-//         ))
-//       }
-//       <p>Add note</p>
-//       <form onSubmit={addNote}>
-//         <input value={title} placeholder="title" onChange={e => setTitle(e.target.value)} />
-//         <textarea value={body} placeholder="body" onChange={e => setBody(e.target.value)} />
-//         <button>Add Note</button>
-//       </form>
-//     </div>
-//   )
-// }
-
-const App = (props) => {
-  const [count, setCount] = useState(props.count)
-  const [text, setText] = useState('')
-
-  //A combo of componentDidMount & componentDidUpdate
   useEffect(() => {
-    console.log('useEffect ran!')
-    document.title = count
+    localStorage.setItem('notes', JSON.stringify(notes))
   })
 
   return (
     <div>
-      <p>The current {text || 'count'} is {count}</p>
-      <button onClick={() => setCount(count - 1)}>-1</button>
-      <button onClick={() => setCount(props.count)}>Reset</button>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-      <input value={text}  onChange={(e) => setText(e.target.value)}/>
+      <h1>Notes</h1>
+      {
+        notes.map(note => (
+          <div key={note.title}>
+            <h3>{note.title}</h3>
+            <p>{note.body}</p>
+            <button onClick={() => removeNote(note.title)}>x</button>
+          </div>
+        ))
+      }
+      <p>Add note</p>
+      <form onSubmit={addNote}>
+        <input value={title} placeholder="title" onChange={e => setTitle(e.target.value)} />
+        <textarea value={body} placeholder="body" onChange={e => setBody(e.target.value)} />
+        <button>Add Note</button>
+      </form>
     </div>
   )
 }
 
-App.defaultProps = {
-  count: 0
-}
+// const App = (props) => {
+//   const [count, setCount] = useState(props.count)
+//   const [text, setText] = useState('')
+
+//   //A combo of componentDidMount & componentDidUpdate
+//   useEffect(() => {
+//     console.log('useEffect ran!')
+//     document.title = count
+//   })
+
+//   return (
+//     <div>
+//       <p>The current {text || 'count'} is {count}</p>
+//       <button onClick={() => setCount(count - 1)}>-1</button>
+//       <button onClick={() => setCount(props.count)}>Reset</button>
+//       <button onClick={() => setCount(count + 1)}>+1</button>
+//       <input value={text}  onChange={(e) => setText(e.target.value)}/>
+//     </div>
+//   )
+// }
+
+// App.defaultProps = {
+//   count: 0
+// }
 
 //This is NOT a good approach and won't work as expected.
 //Click any button then type something in input and it messes up
@@ -92,7 +100,7 @@ App.defaultProps = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NoteApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
