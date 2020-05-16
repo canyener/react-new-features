@@ -24,7 +24,6 @@ const NoteApp = () => {
   }
 
   useEffect(() => {
-    console.log('Run once!')
     const notesData = JSON.parse(localStorage.getItem('notes'))
     if(notesData) {
       setNotes(notesData)
@@ -32,7 +31,6 @@ const NoteApp = () => {
   }, [])
 
   useEffect(() => {
-    console.log('Run when notes change')
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
 
@@ -55,6 +53,16 @@ const NoteApp = () => {
 }
 
 const Note = ({ note, removeNote}) => {
+
+  useEffect(() => {
+    console.log('Setting up effect!')
+
+    return () => {
+      console.log('Cleaning up effect!')
+    }
+
+  }, [])
+
   return (
     <div>
       <h3>{note.title}</h3>
