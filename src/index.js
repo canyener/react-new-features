@@ -57,6 +57,7 @@ const Note = ({ note, removeNote}) => {
   useEffect(() => {
     console.log('Setting up effect!')
 
+    //Cleanup function for the effect
     return () => {
       console.log('Cleaning up effect!')
     }
