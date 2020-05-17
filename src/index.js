@@ -4,6 +4,8 @@ import * as serviceWorker from './serviceWorker'
 
 import notesReducer from './reducers/notes'
 
+import Note from './components/Note'
+
 const NoteApp = () => {
 
   //1st parameter: reducer function.
@@ -49,27 +51,6 @@ const NoteApp = () => {
         <textarea value={body} placeholder="body" onChange={e => setBody(e.target.value)} />
         <button>Add Note</button>
       </form>
-    </div>
-  )
-}
-
-const Note = ({ note, removeNote}) => {
-
-  useEffect(() => {
-    console.log('Setting up effect!')
-
-    //Cleanup function for the effect
-    return () => {
-      console.log('Cleaning up effect!')
-    }
-
-  }, [])
-
-  return (
-    <div>
-      <h3>{note.title}</h3>
-      <p>{note.body}</p>
-      <button onClick={() => removeNote(note.title)}>x</button>
     </div>
   )
 }
