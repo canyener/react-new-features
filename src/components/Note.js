@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-const Note = ({ note, removeNote}) => {
+import NotesContext from '../context/notes-context'
+
+const Note = ({ note }) => {
+  const { dispatch } = useContext(NotesContext) 
+  
   return (
     <div>
       <h3>{note.title}</h3>
       <p>{note.body}</p>
-      <button onClick={() => removeNote(note.title)}>x</button>
+      <button onClick={() => dispatch({ type: 'REMOVE_NOTE', title: note.title })}>x</button>
     </div>
   )
 }
