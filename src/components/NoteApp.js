@@ -13,10 +13,6 @@ const NoteApp = () => {
   //2nd parameter: initial state.
   const [notes, dispatch] = useReducer(notesReducer, [])
 
-  const removeNote = (titleToRemove) => {
-    dispatch({ type: 'REMOVE_NOTE', title: titleToRemove })
-  }
-
   useEffect(() => {
     const notesData = JSON.parse(localStorage.getItem('notes'))
     if(notesData) {
@@ -31,7 +27,7 @@ const NoteApp = () => {
   return (
     <NotesContext.Provider value={{ notes, dispatch }}>
       <h1>Notes</h1>
-      <NoteList removeNote={removeNote} />
+      <NoteList />
       <AddNoteForm dispatch={dispatch} />
     </NotesContext.Provider>
   )
