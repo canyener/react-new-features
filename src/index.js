@@ -42,9 +42,9 @@ const NoteApp = () => {
   }
 
   useEffect(() => {
-    const notes = JSON.parse(localStorage.getItem('notes'))
-    if(notes) {
-      dispatch({ type: 'POPULATE_NOTES', notes })
+    const notesData = JSON.parse(localStorage.getItem('notes'))
+    if(notesData) {
+      dispatch({ type: 'POPULATE_NOTES', notes: notesData})
     }
   }, [])
 
