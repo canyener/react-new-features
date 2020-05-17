@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 
-const AddNoteForm = ({ dispatch }) => {
+import NotesContext from '../context/notes-context'
+
+const AddNoteForm = () => {
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
+
+  const { dispatch } = useContext(NotesContext)
 
   const addNote = (e) => {
     e.preventDefault()
